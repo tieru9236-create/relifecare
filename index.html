@@ -267,7 +267,7 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 6px;
     }
 
-    /* サービスの流れ（若い日本人スタッフの実写画像対応） */
+    /* サービスの流れ（指定された実際の画像を使用） */
     .flow-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -300,23 +300,9 @@ html_content = """<!DOCTYPE html>
       border-color: rgba(37, 99, 235, 0.3);
     }
 
-    .flow-num {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 2;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(4px);
-      color: #ffffff;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 900;
-    }
-
     .flow-img-wrap {
       width: 100%;
-      height: 140px;
+      height: 160px;
       overflow: hidden;
       position: relative;
     }
@@ -673,7 +659,7 @@ html_content = """<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- サービスの流れ (若い日本人・アジア系スタッフの実写画像化) -->
+    <!-- サービスの流れ (ご提示いただいた指定画像①〜⑤を反映) -->
     <section>
       <div class="section-header">
         <div class="section-sub">PROCESS</div>
@@ -681,63 +667,58 @@ html_content = """<!DOCTYPE html>
       </div>
 
       <div class="flow-grid">
-        <!-- 1. 相談 (親しみやすい若いスタッフの打ち合わせ) -->
+        <!-- 1. 相談・打合せ -->
         <div class="flow-card">
-          <span class="flow-num">01</span>
           <div class="flow-img-wrap">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="笑顔でご相談を承る若いスタッフ">
+            <img src="①.jpg" alt="1. 相談・打合せ">
           </div>
           <div class="flow-card-content">
             <h4>相談・打合せ</h4>
-            <p>ご希望を丁寧にお聞きし、最適なプランをご提案。</p>
+            <p>お客様のご要望を丁寧にお伺いし、最適なプランをご提案いたします。</p>
           </div>
         </div>
 
-        <!-- 2. 仕分け (若手スタッフの丁寧な仕分け・整理) -->
+        <!-- 2. 仕分け・整理 -->
         <div class="flow-card">
-          <span class="flow-num">02</span>
           <div class="flow-img-wrap">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="チームで協力して仕分け・整理作業">
+            <img src="②.jpg" alt="2. 仕分け・整理">
           </div>
           <div class="flow-card-content">
             <h4>仕分け・整理</h4>
-            <p>必要なものと不要なものを丁寧に分別します。</p>
+            <p>大切なものは丁寧に、不用品はしっかりと仕分け・整理を行います。</p>
           </div>
         </div>
 
-        <!-- 3. 買取 (丁寧な査定・対応) -->
+        <!-- 3. 買取査定 -->
         <div class="flow-card">
-          <span class="flow-num">03</span>
           <div class="flow-img-wrap">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" alt="丁寧な査定・対応">
+            <img src="③.jpg" alt="3. 買取査定">
           </div>
           <div class="flow-card-content">
             <h4>買取査定</h4>
-            <p>状態の良いものを適正査定し、費用を還元。</p>
+            <p>専門スタッフが丁寧に査定し、ご納得いただける買取を行います。</p>
           </div>
         </div>
 
-        <!-- 4. 処分 (テキパキと搬出作業を行う若いスタッフ) -->
+        <!-- 4. 適正処分 -->
         <div class="flow-card">
-          <span class="flow-num">04</span>
           <div class="flow-img-wrap">
-            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="安全に作業を行う若いスタッフ">
+            <img src="④.jpg" alt="4. 適正処分">
           </div>
           <div class="flow-card-content">
             <h4>適正処分</h4>
-            <p>法令を遵守し、不要品を安全に搬出・処分。</p>
+            <p>不用品の搬出・運搬を安全に行い、法令に則った適正な処分を行います。</p>
           </div>
         </div>
 
-        <!-- 5. 清掃 (ピカピカに仕上げるクリーンスタッフ) -->
+        <!-- 5. 清掃・仕上げ -->
         <div class="flow-card">
-          <span class="flow-num">05</span>
           <div class="flow-img-wrap">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="笑顔で清掃・仕上げを行うスタッフ">
+            <img src="⑤.jpg" alt="5. 清掃・仕上げ">
           </div>
           <div class="flow-card-content">
             <h4>清掃・仕上げ</h4>
-            <p>作業後の清掃を行い、快適な住環境に整えます。</p>
+            <p>最後まで責任を持って、清掃・仕上げを行い、気持ちよくお引き渡しいたします。</p>
           </div>
         </div>
       </div>
@@ -856,4 +837,4 @@ html_content = """<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("Updated with young staff images.")
+print("Updated HTML with local images 1 to 5.")
