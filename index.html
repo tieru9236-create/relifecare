@@ -267,7 +267,7 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 6px;
     }
 
-    /* サービスの流れ */
+    /* サービスの流れ（実写画像対応） */
     .flow-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -283,7 +283,7 @@ html_content = """<!DOCTYPE html>
     .flow-card {
       background: var(--card-bg);
       border-radius: 20px;
-      padding: 24px 18px;
+      overflow: hidden;
       box-shadow: var(--card-shadow);
       border: 1px solid rgba(255, 255, 255, 0.8);
       display: flex;
@@ -302,21 +302,42 @@ html_content = """<!DOCTYPE html>
 
     .flow-num {
       position: absolute;
-      top: 15px;
-      left: 15px;
-      font-size: 12px;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
       font-weight: 900;
-      color: var(--text-sub);
-      opacity: 0.5;
     }
 
-    .flow-svg-wrap {
-      width: 90px;
-      height: 90px;
-      margin: 10px 0 15px;
+    .flow-img-wrap {
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .flow-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .flow-card:hover .flow-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    .flow-card-content {
+      padding: 18px 16px 22px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      flex-grow: 1;
     }
 
     .flow-card h4 {
@@ -590,22 +611,7 @@ html_content = """<!DOCTYPE html>
 </head>
 <body>
 
-  <!-- スタイリッシュベクターイラスト (日本人作業員・作業服) -->
   <svg style="display: none;">
-    <g id="worker-stylish">
-      <circle cx="50" cy="40" r="18" fill="#f8daf8" opacity="0"/>
-      <path d="M 36,42 C 36,28 64,28 64,42 C 64,52 36,52 36,42 Z" fill="#ffdbac"/>
-      <path d="M 37,36 Q 44,30 50,37 Q 56,30 63,36 C 60,30 40,30 37,36 Z" fill="#0f172a"/>
-      <circle cx="44" cy="40" r="2" fill="#0f172a"/>
-      <circle cx="56" cy="40" r="2" fill="#0f172a"/>
-      <path d="M 46,46 Q 50,49 54,46" stroke="#0f172a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <path d="M 33,34 C 33,20 67,20 67,34 Z" fill="#f59e0b"/>
-      <rect x="30" y="32" width="40" height="4" rx="2" fill="#d97706"/>
-      <path d="M 22,75 L 30,52 C 32,48 38,47 50,47 C 62,47 68,48 70,52 L 78,75 Z" fill="#1e3a8a"/>
-      <polygon points="50,47 43,58 57,58" fill="#ffffff"/>
-      <polygon points="50,51 46,58 54,58" fill="#2563eb"/>
-    </g>
-
     <!-- LINE公式アイコンSVG -->
     <g id="line-icon">
       <path d="M 12 2 C 6.477 2 2 5.865 2 10.631 C 2 13.687 3.978 16.345 6.948 17.859 C 6.559 19.294 5.625 21.037 5.485 21.288 C 5.378 21.48 5.474 21.724 5.688 21.782 C 5.761 21.801 5.838 21.797 5.908 21.768 C 9.24 20.354 11.411 19.049 12.38 18.42 C 18.005 18.069 22 14.542 22 10.631 C 22 5.865 17.523 2 12 2 Z" fill="currentColor"/>
@@ -667,7 +673,7 @@ html_content = """<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- サービスの流れ -->
+    <!-- サービスの流れ (実写画像化) -->
     <section>
       <div class="section-header">
         <div class="section-sub">PROCESS</div>
@@ -678,78 +684,61 @@ html_content = """<!DOCTYPE html>
         <!-- 1. 相談 -->
         <div class="flow-card">
           <span class="flow-num">01</span>
-          <div class="flow-svg-wrap">
-            <svg width="80" height="80" viewBox="0 0 100 100">
-              <use href="#worker-stylish"/>
-              <rect x="58" y="52" width="22" height="28" rx="3" fill="#334155"/>
-              <rect x="61" y="55" width="16" height="22" rx="1" fill="#ffffff"/>
-              <line x1="64" y1="60" x2="74" y2="60" stroke="#94a3b8" stroke-width="2"/>
-              <line x1="64" y1="65" x2="74" y2="65" stroke="#94a3b8" stroke-width="2"/>
-            </svg>
+          <div class="flow-img-wrap">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="打合せをする作業服のスタッフ">
           </div>
-          <h4>相談・打合せ</h4>
-          <p>ご希望を丁寧にお聞きし、最適なプランをご提案。</p>
+          <div class="flow-card-content">
+            <h4>相談・打合せ</h4>
+            <p>ご希望を丁寧にお聞きし、最適なプランをご提案。</p>
+          </div>
         </div>
 
         <!-- 2. 仕分け -->
         <div class="flow-card">
           <span class="flow-num">02</span>
-          <div class="flow-svg-wrap">
-            <svg width="80" height="80" viewBox="0 0 100 100">
-              <use href="#worker-stylish"/>
-              <path d="M 20,68 L 50,60 L 80,68 L 50,76 Z" fill="#f59e0b"/>
-              <rect x="20" y="68" width="30" height="18" fill="#d97706"/>
-              <rect x="50" y="68" width="30" height="18" fill="#f59e0b"/>
-            </svg>
+          <div class="flow-img-wrap">
+            <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80" alt="荷物の仕分け作業">
           </div>
-          <h4>仕分け・整理</h4>
-          <p>必要なものと不要なものを丁寧に分別します。</p>
+          <div class="flow-card-content">
+            <h4>仕分け・整理</h4>
+            <p>必要なものと不要なものを丁寧に分別します。</p>
+          </div>
         </div>
 
         <!-- 3. 買取 -->
         <div class="flow-card">
           <span class="flow-num">03</span>
-          <div class="flow-svg-wrap">
-            <svg width="80" height="80" viewBox="0 0 100 100">
-              <use href="#worker-stylish"/>
-              <circle cx="65" cy="62" r="12" fill="none" stroke="#f59e0b" stroke-width="3"/>
-              <line x1="57" y1="70" x2="48" y2="79" stroke="#78350f" stroke-width="4" stroke-linecap="round"/>
-              <text x="61" y="66" font-size="12" font-weight="bold" fill="#d97706">¥</text>
-            </svg>
+          <div class="flow-img-wrap">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="査定・買取">
           </div>
-          <h4>買取査定</h4>
-          <p>状態の良いものを適正査定し、費用を還元。</p>
+          <div class="flow-card-content">
+            <h4>買取査定</h4>
+            <p>状態の良いものを適正査定し、費用を還元。</p>
+          </div>
         </div>
 
         <!-- 4. 処分 -->
         <div class="flow-card">
           <span class="flow-num">04</span>
-          <div class="flow-svg-wrap">
-            <svg width="80" height="80" viewBox="0 0 100 100">
-              <rect x="35" y="48" width="50" height="30" rx="4" fill="#2563eb"/>
-              <rect x="70" y="55" width="22" height="23" rx="2" fill="#60a5fa"/>
-              <circle cx="48" cy="78" r="6" fill="#0f172a"/>
-              <circle cx="78" cy="78" r="6" fill="#0f172a"/>
-              <use href="#worker-stylish" transform="scale(0.6) translate(-5, 15)"/>
-            </svg>
+          <div class="flow-img-wrap">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="搬出・処分">
           </div>
-          <h4>適正処分</h4>
-          <p>法令を遵守し、不要品を安全に搬出・処分。</p>
+          <div class="flow-card-content">
+            <h4>適正処分</h4>
+            <p>法令を遵守し、不要品を安全に搬出・処分。</p>
+          </div>
         </div>
 
         <!-- 5. 清掃 -->
         <div class="flow-card">
           <span class="flow-num">05</span>
-          <div class="flow-svg-wrap">
-            <svg width="80" height="80" viewBox="0 0 100 100">
-              <use href="#worker-stylish"/>
-              <line x1="65" y1="52" x2="78" y2="82" stroke="#64748b" stroke-width="3"/>
-              <rect x="70" y="78" width="16" height="8" rx="2" fill="#38bdf8"/>
-              <path d="M 22,55 Q 22,48 15,48 Q 22,48 22,41 Q 22,48 29,48 Q 22,48 22,55 Z" fill="#fde047"/>
-            </svg>
+          <div class="flow-img-wrap">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80" alt="室内清掃作業">
           </div>
-          <h4>清掃・仕上げ</h4>
-          <p>作業後の清掃を行い、快適な住環境に整えます。</p>
+          <div class="flow-card-content">
+            <h4>清掃・仕上げ</h4>
+            <p>作業後の清掃を行い、快適な住環境に整えます。</p>
+          </div>
         </div>
       </div>
 
@@ -867,4 +856,4 @@ html_content = """<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("LINE問い合わせボタンを追加したHTMLファイルを保存しました。")
+print("実写写真版のHTMLファイルを更新・保存しました。")
