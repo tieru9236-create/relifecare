@@ -659,7 +659,7 @@ html_content = """<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- サービスの流れ (ご提示いただいた指定画像①〜⑤を反映) -->
+    <!-- サービスの流れ (指定された画像の.png版を使用) -->
     <section>
       <div class="section-header">
         <div class="section-sub">PROCESS</div>
@@ -670,7 +670,7 @@ html_content = """<!DOCTYPE html>
         <!-- 1. 相談・打合せ -->
         <div class="flow-card">
           <div class="flow-img-wrap">
-            <img src="①.jpg" alt="1. 相談・打合せ">
+            <img src="step1.png" alt="1. 相談・打合せ">
           </div>
           <div class="flow-card-content">
             <h4>相談・打合せ</h4>
@@ -681,7 +681,7 @@ html_content = """<!DOCTYPE html>
         <!-- 2. 仕分け・整理 -->
         <div class="flow-card">
           <div class="flow-img-wrap">
-            <img src="②.jpg" alt="2. 仕分け・整理">
+            <img src="step2.png" alt="2. 仕分け・整理">
           </div>
           <div class="flow-card-content">
             <h4>仕分け・整理</h4>
@@ -692,7 +692,7 @@ html_content = """<!DOCTYPE html>
         <!-- 3. 買取査定 -->
         <div class="flow-card">
           <div class="flow-img-wrap">
-            <img src="③.jpg" alt="3. 買取査定">
+            <img src="step3.png" alt="3. 買取査定">
           </div>
           <div class="flow-card-content">
             <h4>買取査定</h4>
@@ -703,7 +703,7 @@ html_content = """<!DOCTYPE html>
         <!-- 4. 適正処分 -->
         <div class="flow-card">
           <div class="flow-img-wrap">
-            <img src="④.jpg" alt="4. 適正処分">
+            <img src="step4.png" alt="4. 適正処分">
           </div>
           <div class="flow-card-content">
             <h4>適正処分</h4>
@@ -714,7 +714,7 @@ html_content = """<!DOCTYPE html>
         <!-- 5. 清掃・仕上げ -->
         <div class="flow-card">
           <div class="flow-img-wrap">
-            <img src="⑤.jpg" alt="5. 清掃・仕上げ">
+            <img src="step5.png" alt="5. 清掃・仕上げ">
           </div>
           <div class="flow-card-content">
             <h4>清掃・仕上げ</h4>
@@ -834,7 +834,4 @@ html_content = """<!DOCTYPE html>
 </html>
 """
 
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
-
-print("Updated HTML with local images 1 to 5.")
+print(html_content)
