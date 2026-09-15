@@ -1,4 +1,4 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -80,11 +80,15 @@ html_content = """<!DOCTYPE html>
       justify-content: space-between;
       align-items: center;
       padding: 14px 0;
+      gap: 16px;
     }
 
+    /* 社名ロゴエリア（約70%の幅を占有） */
     .logo-area {
       display: flex;
       flex-direction: column;
+      flex: 0 1 70%;
+      max-width: 70%;
     }
 
     .logo-sub {
@@ -93,21 +97,25 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .logo-title {
-      font-size: 26px;
+      font-size: clamp(28px, 5vw, 42px);
       font-weight: 900;
       background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.03em;
+      line-height: 1.1;
+      white-space: nowrap;
     }
 
     .header-btns {
       display: flex;
       gap: 10px;
       align-items: center;
+      flex: 0 0 auto;
     }
 
     .contact-btn {
@@ -123,6 +131,7 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
 
     .contact-btn:hover {
@@ -143,6 +152,7 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
 
     .line-btn-nav:hover {
@@ -267,7 +277,7 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 6px;
     }
 
-    /* サービスの流れ（指定された実際の画像を使用） */
+    /* サービスの流れ */
     .flow-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -478,12 +488,22 @@ html_content = """<!DOCTYPE html>
       border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
+    .area-map-wrap {
+      max-width: 520px;
+      margin: 24px auto 20px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 15px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.04), 0 8px 15px rgba(0,0,0,0.05);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
     .area-tags {
       display: flex;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     .area-tag {
@@ -659,7 +679,7 @@ html_content = """<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- サービスの流れ (指定された画像の.png版を使用) -->
+    <!-- サービスの流れ -->
     <section>
       <div class="section-header">
         <div class="section-sub">PROCESS</div>
@@ -785,11 +805,98 @@ html_content = """<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- エリア -->
+    <!-- エリア（千葉県・対象エリアのベクター地図イラスト内蔵） -->
     <section style="padding-top:0;">
       <div class="area-card">
         <h3 style="font-size:22px; font-weight:800; color:var(--primary); margin-bottom:6px;">対応エリア</h3>
         <p style="font-size:15px; color:var(--accent-teal); font-weight:700;">千葉市全区を中心にスムーズに対応いたします</p>
+        
+        <!-- 千葉県・周辺エリアのオリジナルのグラフィック地図SVG -->
+        <div class="area-map-wrap">
+          <svg viewBox="0 0 500 280" width="100%" height="auto">
+            <defs>
+              <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#10b981" />
+                <stop offset="100%" stop-color="#059669" />
+              </linearGradient>
+              <linearGradient id="centerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2563eb" />
+                <stop offset="100%" stop-color="#1d4ed8" />
+              </linearGradient>
+              <filter id="mapShadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+              </filter>
+            </defs>
+
+            <!-- 背景（東京湾・海イメージ） -->
+            <rect width="500" height="280" fill="#f8fafc" rx="12"/>
+            <path d="M 0,160 Q 90,170 140,210 Q 180,240 220,280 L 0,280 Z" fill="#e0f2fe" opacity="0.7"/>
+            <text x="35" y="240" font-size="12" font-weight="bold" fill="#0284c7" opacity="0.6">東京湾</text>
+
+            <!-- 千葉県外郭風マップベース -->
+            <g filter="url(#mapShadow)">
+              <!-- その他周辺エリア -->
+              <path d="M 60,70 L 130,50 L 170,30 L 260,30 L 310,40 L 440,80 L 460,150 L 400,240 L 280,270 L 220,270 Q 180,220 140,190 Q 90,160 60,150 Z" fill="#cbd5e1" opacity="0.4"/>
+
+              <!-- 対応エリアブロック群 -->
+              <!-- 船橋市 -->
+              <path d="M 100,105 L 140,95 L 165,115 L 145,145 L 110,135 Z" fill="url(#activeGradient)"/>
+              
+              <!-- 八千代市 -->
+              <path d="M 165,115 L 210,100 L 230,120 L 195,140 L 165,115 Z" fill="url(#activeGradient)"/>
+              
+              <!-- 佐倉市 -->
+              <path d="M 230,120 L 290,105 L 315,135 L 265,155 L 230,120 Z" fill="url(#activeGradient)"/>
+              
+              <!-- 四街道市（拠点エリア） -->
+              <path d="M 195,140 L 230,120 L 265,155 L 225,170 Z" fill="url(#centerGradient)"/>
+              
+              <!-- 千葉市全区 (中心エリア) -->
+              <path d="M 145,145 L 195,140 L 225,170 L 250,210 L 180,225 L 135,175 Z" fill="url(#centerGradient)"/>
+            </g>
+
+            <!-- 境界線 -->
+            <path d="M 145,145 L 195,140 M 165,115 L 195,140 M 230,120 L 195,140 M 230,120 L 265,155 M 225,170 L 195,140 M 225,170 L 265,155" stroke="#ffffff" stroke-width="2" fill="none"/>
+
+            <!-- マップピン＆ラベル -->
+            <!-- 船橋市 -->
+            <circle cx="125" cy="118" r="4" fill="#ffffff"/>
+            <text x="125" y="110" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">船橋市</text>
+
+            <!-- 八千代市 -->
+            <circle cx="192" cy="114" r="4" fill="#ffffff"/>
+            <text x="192" y="106" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">八千代市</text>
+
+            <!-- 佐倉市 -->
+            <circle cx="270" cy="128" r="4" fill="#ffffff"/>
+            <text x="270" y="120" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">佐倉市</text>
+
+            <!-- 四街道市 -->
+            <g transform="translate(225, 142)">
+              <circle cx="0" cy="0" r="14" fill="#ef4444" opacity="0.25"/>
+              <circle cx="0" cy="0" r="6" fill="#ef4444"/>
+              <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
+              <rect x="-26" y="-24" width="52" height="16" rx="8" fill="#ef4444"/>
+              <text x="0" y="-13" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">四街道市</text>
+            </g>
+
+            <!-- 千葉市全区 -->
+            <g transform="translate(180, 182)">
+              <rect x="-36" y="-10" width="72" height="20" rx="10" fill="#1e3a8a"/>
+              <text x="0" y="4" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">★ 千葉市全区</text>
+            </g>
+
+            <!-- 凡例 -->
+            <g transform="translate(340, 220)">
+              <rect x="0" y="0" width="145" height="48" rx="8" fill="#ffffff" opacity="0.9" stroke="#cbd5e1"/>
+              <rect x="10" y="11" width="12" height="12" rx="3" fill="url(#centerGradient)"/>
+              <text x="28" y="21" font-size="10" font-weight="bold" fill="#0f172a">主要対応エリア</text>
+              <rect x="10" y="28" width="12" height="12" rx="3" fill="url(#activeGradient)"/>
+              <text x="28" y="38" font-size="10" font-weight="bold" fill="#0f172a">周辺対応エリア</text>
+            </g>
+          </svg>
+        </div>
+
         <div class="area-tags">
           <span class="area-tag">千葉市全区</span>
           <span class="area-tag">四街道市</span>
@@ -832,6 +939,3 @@ html_content = """<!DOCTYPE html>
 
 </body>
 </html>
-"""
-
-print(html_content)
